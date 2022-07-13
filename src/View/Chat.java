@@ -57,20 +57,22 @@ public static void main(String args[]) {
 	System.out.println("Welcome to chat "+username);
 	System.out.println("Press q to Quit Global Chat");
 	while(true) {
-		ak.nextLine();
 		message=ak.nextLine();
 		if(message.equals("q")){
 			System.out.println("Global Chat exited");
 			break;
 		}
-		broad.setMessage(message);
+		if(!message.isEmpty()) {
+			broad.setMessage(message);
+			globalcontroller.SendMessage(broad);
+		}
 		//System.out.print(broad.getSender()+broad.getMessage());
-		globalcontroller.SendMessage(broad);
 	}
 	}
 	else {
 		System.out.println("Login failed!!!");
 	}
+	break;
 	case 0: System.exit(0);
 	}
 	}

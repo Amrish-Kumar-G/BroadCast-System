@@ -15,7 +15,7 @@ class Readmessage extends Thread{
 	}
 	@Override
 	public void run() {
-		int id=1;
+		int id=0;
 		while(true) {
 		int max=globaloperation.Maxid();
 		if(max>id) {
