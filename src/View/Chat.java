@@ -55,12 +55,14 @@ public static void main(String args[]) {
 	System.out.println("Login Successfull!!!");
 	broad.setSender(username);
 	System.out.println("Welcome to chat "+username);
-	System.out.println("enter number of messages");
-	int i=1;
-	while(i!=0) {
-		i=ak.nextInt();
+	System.out.println("Press q to Quit Global Chat");
+	while(true) {
 		ak.nextLine();
 		message=ak.nextLine();
+		if(message.equals("q")){
+			System.out.println("Global Chat exited");
+			break;
+		}
 		broad.setMessage(message);
 		//System.out.print(broad.getSender()+broad.getMessage());
 		globalcontroller.SendMessage(broad);
