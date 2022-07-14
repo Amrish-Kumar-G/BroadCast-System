@@ -13,9 +13,7 @@ public class Authvalidation {
 		String nickname="";
 		ArrayList<Authentication> auth =new ArrayList<>();
 		Connection connection= Globalconnect.getConnection();
-		Statement statement;
 		try {
-			statement = connection.createStatement();
 			PreparedStatement ps=connection.prepareStatement("Select * from auth where name=? and password=?");
 			ps.setString(1, name);
 			ps.setString(2, password);
@@ -42,5 +40,22 @@ public class Authvalidation {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	public String deleteAccount(String name,String password) {
+		String ans="";
+		try {
+			Connection con=Globalconnect.getConnection();
+			PreparedStatement ps=con.prepareStatement("delete from auth where name=? and password=?");
+			ps.setString(1, name);
+			ps.setString(2, password);
+			ps.executeUpdate();
+			ans="deleted";
+			con.close();
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ans;
+		
 	}
 }

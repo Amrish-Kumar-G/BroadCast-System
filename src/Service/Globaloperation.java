@@ -47,7 +47,6 @@ public class Globaloperation {
 		try {
 			Connection con=Globalconnect.getConnection();
 			Statement statement=con.createStatement();
-			PreparedStatement ps=con.prepareStatement("insert into global (sender,message) values(?,?)");
 			ResultSet result=statement.executeQuery("select max(id) as maxid from global");
 			while(result.next()) {
 				ans=result.getInt("maxid");	

@@ -24,6 +24,7 @@ public static void main(String args[]) {
 	while(true) {
 	System.out.println("1.Registration");
 	System.out.println("2.Login");
+	System.out.println("3.Delete my Account");
 	System.out.println("0.Exit");
 	int choice=ak.nextInt();
 	switch(choice) {
@@ -73,6 +74,33 @@ public static void main(String args[]) {
 		System.out.println("Login failed!!!");
 	}
 	break;
+	case 3:
+		System.out.println("enter name");
+		name=ak.next();
+		System.out.println("enter password");
+		password=ak.next();
+		auth.setName(name);
+		auth.setPassword(password);
+		username=valid.authentication(name, password);
+		if(username!="") {
+		System.out.println("Login Successfull!!!");
+		broad.setSender(username);
+		System.out.println("Press 1 to Confirm Account Deletion");
+		int temp=ak.nextInt();
+		if(temp==1) {
+			String tempname=valid.deleteAccount(name,password);
+			if(tempname!="") {
+				System.out.println(tempname+" Account Deleted!!!");
+				
+		}
+		}else {
+			System.out.println("Account not Deleted");
+		}
+		}
+		else {
+			System.out.println("Login failed!!!");
+		}
+		break;
 	case 0: System.exit(0);
 	}
 	}
